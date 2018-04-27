@@ -1,3 +1,6 @@
+Use the following as a template :
+https://github.com/thephpleague/statsd
+
 # Jasper Starter
 
 JasperPHP: Easier interfacing with JasperStarter command line tool. 
