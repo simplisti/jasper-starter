@@ -26,6 +26,10 @@ Installing JasperStarter should be simple following these steps:
 	ln -s /opt/jasperstarter/jdbc/mysql.jar /usr/share/java/mysql.jar 
 `
 
+# Best Practices
+
+Don't perform most calculations in the template - instead calculate those values in your client or server code and persist the sub-totals and grand total in the DB.
+
 # Alternatives
 
 - https://packagist.org/packages/cossou/jasperphp
