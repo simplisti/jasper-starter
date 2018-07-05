@@ -42,8 +42,12 @@ class Starter extends AbstractDs
      * $exeuctablePath is absolute path to the jasperstarter binary
      * 
      */
-    public function __construct (string $locale, $sourcePath, string $compiledPath = '', string $processedPath = '', string $executablePath = '/opt/jasperstarter/bin/jasperstarter')
+    public function __construct (string $locale, string $sourcePath, string $compiledPath = '', string $processedPath = '', string $executablePath = '/opt/jasperstarter/bin/jasperstarter', array $optionalArguments = null)
     {
+        if (null !== $optionalArguments) {
+            $this->parameters = $optionalArguments;
+        }
+
         $this->setDataSource();
 
         $systemTempPath = sys_get_temp_dir();
