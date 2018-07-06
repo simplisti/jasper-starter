@@ -5,7 +5,14 @@ https://github.com/thephpleague/statsd
 
 JasperPHP: Easier interfacing with JasperStarter command line tool. 
 
-# Installation
+# Install JasperStarter Library
+
+`
+	composer require "simplisti/lib-jasper-starter": "dev-master"
+`
+
+
+# Install JasperStarter Binary
 
 Installing JasperStarter should be simple following these steps:
 
@@ -24,6 +31,27 @@ Installing JasperStarter should be simple following these steps:
 	apt-get -f -y install
 
 	ln -s /opt/jasperstarter/jdbc/mysql.jar /usr/share/java/mysql.jar 
+`
+
+# Configuring with Symfony
+
+`
+    # Configure the Jasper starter service
+    Simplisti\Lib\JasperStarter\Starter:
+        arguments:
+            $locale: '%cadorath.locale%'
+            $sourcePath: '%cadorath.path.jasper.source%'
+            $compiledPath: 'compiled'          
+            $optionalArguments:
+                CADORATH_ID: '%cadorath.id%'
+        calls:
+            - method: setDatasource
+              arguments:
+                - 'mysql'
+            - method: setDatabaseUrl 
+              arguments:
+                $url: '%env(DATABASE_URL)%'
+
 `
 
 # Best Practices
