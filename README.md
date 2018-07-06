@@ -11,7 +11,6 @@ JasperPHP: Easier interfacing with JasperStarter command line tool.
 	composer require "simplisti/lib-jasper-starter": "dev-master"
 `
 
-
 # Install JasperStarter Binary
 
 Installing JasperStarter should be simple following these steps:
@@ -39,11 +38,11 @@ Installing JasperStarter should be simple following these steps:
     # Configure the Jasper starter service
     Simplisti\Lib\JasperStarter\Starter:
         arguments:
-            $locale: '%cadorath.locale%'
-            $sourcePath: '%cadorath.path.jasper.source%'
+            $locale: '%application.locale%'
+            $sourcePath: '%application.path.jasper.source%'
             $compiledPath: 'compiled'          
             $optionalArguments:
-                CADORATH_ID: '%cadorath.id%'
+                CADORATH_ID: '%application.id%'
         calls:
             - method: setDatasource
               arguments:
