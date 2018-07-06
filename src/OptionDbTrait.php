@@ -49,7 +49,7 @@ trait OptionDbTrait
     {
         $parts = parse_url($url);
 
-        $this->database['name'] = $parts['path'];
+        $this->database['name'] = trim($parts['path'], '/');
         $this->database['user'] = $parts['user'];
         $this->database['pass'] = $parts['pass'];
         $this->database['host'] = $parts['host'];
