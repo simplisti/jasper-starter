@@ -41,6 +41,24 @@ trait OptionDbTrait
     }
 
     /**
+     * Set the database details via URL
+     * 
+     * @return $this
+     */
+    public function setDatabaseUrl ($url)
+    {
+        $parts = parse_url($url);
+
+        $this->database['name'] = $parts['path'];
+        $this->database['user'] = $parts['user'];
+        $this->database['pass'] = $parts['pass'];
+        $this->database['host'] = $parts['host'];
+        $this->database['port'] = $parts['port'];
+
+        return $this;
+    }
+
+    /**
      * Set the database JDBC details 
      *  
      * @return $this
