@@ -32,7 +32,7 @@ it is a required dependency.
 
 ## Configuring JasperStarter as a Symfony service
 
-`
+```
     # Configure the Jasper starter service
     Simplisti\Lib\JasperStarter\Starter:
         arguments:
