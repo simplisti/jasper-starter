@@ -1,10 +1,10 @@
 {
 	"type": "library",
 	"license": "MIT",
-	"name": "simplisti/lib-jasper-starter",
+	"name": "simplisti/jasper-starter",
 	"description": "JasperStarter PHP interface wrapper",
 	"keywords": ["PDF", "Reporting", "Printing"],
-	"homepage": "https://github.com/simplisti/lib-jasper-starter",	
+	"homepage": "https://github.com/simplisti/jasper-starter",	
 	"authors": [
 		{
 			"name": "Alex Barylski",
