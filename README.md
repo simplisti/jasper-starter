@@ -5,7 +5,7 @@ Easier interfacing with JasperStarter command line tool.
 ## Install 
 
 ```
-	composer require "alex-barylski/jasper-starter": "dev-master"
+	composer require "simplisti/jasper-starter": "dev-master"
 ```
 
 ## Install JasperStarter Binary
