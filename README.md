@@ -49,16 +49,6 @@ it is a required dependency.
               arguments:
                 $url: '%env(DATABASE_URL)%'
 ```
-
-## ADDED
- - Decoupled report from starter to better SOA and OOD
-   - Setting parameters globally and/or report specific less hackish and easier
- - Fixed minor issue with NULL parameters 
- - Dropped `verbose` switch support - redundant info
- - Clear single parameters using setParameter()
- - Added exceptions thrown when CLI errors
- - Added support for JDBC / Oracle (Un-tested)
- - Added support for CSV file data source
  
 ## TODO 
  - List printers and implement direct printer control
