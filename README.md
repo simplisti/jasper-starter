@@ -1,21 +1,19 @@
-Use the following as a template :
-https://github.com/thephpleague/statsd
+# PHP JasperStarter Library
 
-# Jasper Starter
+Easier interfacing with JasperStarter command line tool. 
 
-JasperPHP: Easier interfacing with JasperStarter command line tool. 
+## Install 
 
-# Install JasperStarter Library
+```
+	composer require "alex-barylski/jasper-starter": "dev-master"
+```
 
-`
-	composer require "simplisti/lib-jasper-starter": "dev-master"
-`
+## Install JasperStarter Binary
 
-# Install JasperStarter Binary
+The JasperStarter command line tool does most of the heavy lifting so installing 
+it is a required dependency.
 
-Installing JasperStarter should be simple following these steps:
-
-` 
+```
 	sed -i "s/jessie main/jessie main non-free contrib/g" /etc/apt/sources.list && apt-get update && apt-get -y install msttcorefonts
 	cd /tmp
 	wget https://sourceforge.net/projects/jasperstarter/files/JasperStarter-3.0/jasperstarter-3.0.0-bin.zip/download -O jasperstarter-3.0.0.zip
@@ -30,9 +28,9 @@ Installing JasperStarter should be simple following these steps:
 	apt-get -f -y install
 
 	ln -s /opt/jasperstarter/jdbc/mysql.jar /usr/share/java/mysql.jar 
-`
+```
 
-# Configuring with Symfony
+## Configuring JasperStarter as a Symfony service
 
 `
     # Configure the Jasper starter service
@@ -42,7 +40,7 @@ Installing JasperStarter should be simple following these steps:
             $sourcePath: '%application.path.jasper.source%'
             $compiledPath: 'compiled'          
             $optionalArguments:
-                CADORATH_ID: '%application.id%'
+                SOME_ID: '%application.id%'
         calls:
             - method: setDatasource
               arguments:
@@ -50,8 +48,7 @@ Installing JasperStarter should be simple following these steps:
             - method: setDatabaseUrl 
               arguments:
                 $url: '%env(DATABASE_URL)%'
-
-`
+```
 
 # Best Practices
 
