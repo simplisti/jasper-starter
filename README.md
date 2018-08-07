@@ -50,16 +50,7 @@ it is a required dependency.
                 $url: '%env(DATABASE_URL)%'
 ```
 
-# Best Practices
-
-Don't perform most calculations in the template - instead calculate those values in your client or server code and persist the sub-totals and grand total in the DB.
-
-# Alternatives
-
-- https://packagist.org/packages/cossou/jasperphp
-- https://packagist.org/packages/jasperphp/jasperphp
-
-# ADDED
+## ADDED
  - Decoupled report from starter to better SOA and OOD
    - Setting parameters globally and/or report specific less hackish and easier
  - Fixed minor issue with NULL parameters 
@@ -69,7 +60,12 @@ Don't perform most calculations in the template - instead calculate those values
  - Added support for JDBC / Oracle (Un-tested)
  - Added support for CSV file data source
  
-# TODO 
+## TODO 
  - List printers and implement direct printer control
  - Added support for XML file data source
  - Added support for JSON file data source
+
+## Alternatives
+
+- https://packagist.org/packages/cossou/jasperphp
+- https://packagist.org/packages/jasperphp/jasperphp
