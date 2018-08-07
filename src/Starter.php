@@ -172,40 +172,42 @@ class Starter extends AbstractDs
     protected function processDatabaseOptions (Report $report)
     {
         // NOTE: Check whether database connection details have been set
-        if (false === $this->getDatabase('name') || false === $report->getDatabase('name')) {
+        if (false === $this->getDatabase('name') && false === $report->getDatabase('name')) {
             return '';
         }
 
         // NOTE: Initialize $value for each command option testing the individual 
         //       report values for emptiness and defaulting to controlling object
+        $database = '';
+
         $value = empty($report->getDatabase('host')) ? $this->getDatabase('host') : $report->getDatabase('host');
-        $database = "-H $value ";
+        $database .= empty($value) ? '' : "-H $value ";
 
         $value = empty($report->getDatabase('user')) ? $this->getDatabase('user') : $report->getDatabase('user');
-        $database .= "-u $value ";
+        $database .= empty($value) ? '' : "-u $value ";
 
         $value = empty($report->getDatabase('pass')) ? $this->getDatabase('pass') : $report->getDatabase('pass');
-        $database .= "-p $value ";
+        $database .= empty($value) ? '' : "-p $value ";
 
         $value = empty($report->getDatabase('name')) ? $this->getDatabase('name') : $report->getDatabase('name');
-        $database .= "-n $value ";
+        $database .= empty($value) ? '' : "-n $value ";
 
         $value = empty($report->getDatabase('port')) ? $this->getDatabase('port') : $report->getDatabase('port');
-        $database .= "--db-port $value ";
+        $database .= empty($value) ? '' : "--db-port $value ";
 
         // JDBC options
         $value = empty($report->getDatabase('url')) ? $this->getDatabase('url') : $report->getDatabase('url');
-        $database .= "--db-url $value";
+        $database .= empty($value) ? '' : "--db-url $value";
 
         $value = empty($report->getDatabase('dir')) ? $this->getDatabase('dir') : $report->getDatabase('dir');
-        $database .= "--jdbc-dir $value";
+        $database .= empty($value) ? '' : "--jdbc-dir $value ";
 
         $value = empty($report->getDatabase('class')) ? $this->getDatabase('class') : $report->getDatabase('class');
-        $database .= "--db-driver $value";
+        $database .= empty($value) ? '' : "--db-driver $value ";
 
         // Oracle SID
         $value = empty($report->getDatabase('sid')) ? $this->getDatabase('sid') : $report->getDatabase('sid');
-        $database .= "--db-sid $value";
+        $database .= empty($value) ? '' : "--db-sid $value ";
 
         return $database;
     }
