@@ -84,8 +84,9 @@ command line tool, therefore installing the JasperStarter binary is required.
    - Find JasperStarter binary automagically?
  - Implement Compiler/Processor class?
  - List printers and implement direct printer control
- - Added support for XML file data source
- - Added support for JSON file data source
+ - Add support for dynamic reports via compilation?
+ - Add support for XML file data source
+ - Add support for JSON file data source
  - Support for Windows?
 
 ## Alternatives
