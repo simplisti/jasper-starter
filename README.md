@@ -82,6 +82,8 @@ command line tool, therefore installing the JasperStarter binary is required.
 ## TODO 
  - Implement Symfony bundle and display compilation/process errors in data collector
    - Find JasperStarter binary automagically?
+   - cp and pr commands?
+   - template generation from entity?
  - Implement Compiler/Processor class?
  - List printers and implement direct printer control
  - Add support for dynamic reports via compilation?
