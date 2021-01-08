@@ -80,6 +80,8 @@ command line tool, therefore installing the JasperStarter binary is required.
 ```
  
 ## TODO 
+ - Implement Symfony bundle and display compilation/process errors in data collector
+ - Implement Compiler/Processor class?
  - List printers and implement direct printer control
  - Added support for XML file data source
  - Added support for JSON file data source
