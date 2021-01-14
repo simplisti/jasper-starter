@@ -1,6 +1,8 @@
 <?php
 
-namespace Simplisti\Lib\JasperStarter;
+namespace Simplisti\Lib\JasperStarter\Option;
+
+use Simplisti\Lib\JasperStarter\Exception\HostUnreachableException;
 
 class OptionDbHost
 {
@@ -19,7 +21,7 @@ class OptionDbHost
 
         // Check the host IP quickly
         if ($host === gethostbyname($host)) {
-            throw new \HostUnreachableException("Host ($host) is unreachable or cannot resolve.");
+            throw new HostUnreachableException("Host ($host) is unreachable or cannot resolve.");
         }
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Simplisti\Lib\JasperStarter;
+namespace Simplisti\Lib\JasperStarter\Option;
 
 class OptionDbPass
 {

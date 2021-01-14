@@ -1,8 +1,10 @@
 <?php
 
-use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ExecutableFinder;
+
+use Simplisti\Lib\JasperStarter\Exception\JasperBinaryMissingException;
+use Simplisti\Lib\JasperStarter\Exception\SourceFileMissingException;
 
 class Reporter
 {

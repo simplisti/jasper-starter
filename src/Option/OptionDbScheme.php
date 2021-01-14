@@ -1,6 +1,8 @@
 <?php
 
-namespace Simplisti\Lib\JasperStarter;
+namespace Simplisti\Lib\JasperStarter\Option;
+
+use Simplisti\Lib\JasperStarter\Exception\SchemeUnrecognizedException;
 
 class OptionDbScheme
 {
