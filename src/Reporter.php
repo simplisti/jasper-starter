@@ -1,5 +1,7 @@
 <?php
 
+namespace Simplisti\Lib\JasperStarter;
+
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ExecutableFinder;
 
