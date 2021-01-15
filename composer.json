@@ -2,7 +2,7 @@
 	"type": "library",
 	"license": "MIT",
 	"name": "simplisti/jasper-starter",
-	"description": "JasperStarter PHP interface wrapper",
+	"description": "Object interface for working with JasperStarter",
 	"keywords": ["PDF", "Reporting", "Printing"],
 	"homepage": "https://github.com/simplisti/jasper-starter",	
 	"authors": [

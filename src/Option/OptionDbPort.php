@@ -2,20 +2,15 @@
 
 namespace Simplisti\Lib\JasperStarter\Option;
 
-class OptionDbPort
+class OptionDbPort extends OptionAbstract
 {
-
-    /**
-     * @var string Represents DB port
-     */
-    private $port;
 
     /**
      * constructor
      */
     public function __construct($port)
     {
-        $this->port = $port;
+        $this->setValue($port);
     }
 
     /**
@@ -23,7 +18,7 @@ class OptionDbPort
      */
     public function __toString()
     {
-        return "--db-port={$this->port}";
+        return "--db-port={$this->getValue()}";
     }
 
 }

@@ -2,20 +2,15 @@
 
 namespace Simplisti\Lib\JasperStarter\Option;
 
-class OptionDbName
+class OptionDbName extends OptionAbstract
 {
-
-    /**
-     * @var string Represents DB name
-     */
-    private $name;
 
     /**
      * constructor
      */
     public function __construct($name)
     {
-        $this->name = $name;
+        $this->setValue($name);
     }
 
     /**
@@ -23,7 +18,7 @@ class OptionDbName
      */
     public function __toString()
     {
-        return "-n={$this->name}";
+        return "-n={$this->getValue()}";
     }
 
 }

@@ -2,20 +2,15 @@
 
 namespace Simplisti\Lib\JasperStarter\Option;
 
-class OptionDbUser
+class OptionDbUser extends OptionAbstract
 {
-
-    /**
-     * @var string Represents DB user name
-     */
-    private $user;
 
     /**
      * constructor
      */
     public function __construct($user)
     {
-        $this->user = $user;
+        $this->setValue($user);
     }
 
     /**
@@ -23,7 +18,7 @@ class OptionDbUser
      */
     public function __toString()
     {
-        return "-u={$this->user}";
+        return "-u={$this->getValue()}";
     }
 
 }

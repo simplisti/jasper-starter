@@ -8,6 +8,8 @@ use Symfony\Component\Process\ExecutableFinder;
 use Simplisti\Lib\JasperStarter\Exception\JasperBinaryMissingException;
 use Simplisti\Lib\JasperStarter\Exception\SourceFileMissingException;
 
+use Simplisti\Lib\JasperStarter\Option\OptionOutputType as oType;
+
 class Reporter
 {
     /**
@@ -88,7 +90,11 @@ class Reporter
         $this->validateSourceFile($sourceFile);
 
         // NOTE: Convert each Option object to a string for switch interpolation
-        $options = array_map(function ($item) {
+        $fileExtension = '.pdf';
+        $options = array_map(function ($item) use ($fileExtension) {
+            if ($item instanceof oType) {
+                $fileExtension = '.' . $item->getValue();
+            }
             return (string)$item;
         }, $options);
 
@@ -100,8 +106,7 @@ class Reporter
         $process->start();
         $process->wait(); // Make the process blocking
 
-        // TDOO: We need to figure out how to determine the "type" from Options switches above
-        $outputFile .= '.pdf';
+        $outputFile .= $fileExtension;
 
         return $process; // The process handling processing
     }

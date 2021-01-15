@@ -2,20 +2,15 @@
 
 namespace Simplisti\Lib\JasperStarter\Option;
 
-class OptionDbPass
+class OptionDbPass extends OptionAbstract
 {
-
-    /**
-     * @var string Represents DB user password
-     */
-    private $pass;
 
     /**
      * constructor
      */
     public function __construct($pass)
     {
-        $this->pass = $pass;
+        $this->setValue($pass);
     }
 
     /**
@@ -23,7 +18,7 @@ class OptionDbPass
      */
     public function __toString()
     {
-        return "-p={$this->pass}";
+        return "-p={$this->getValue()}";
     }
 
 }

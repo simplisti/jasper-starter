@@ -1,6 +1,6 @@
 <?php
 
-include_once '../vendor/autoload.php';
+include_once 'vendor/autoload.php';
 
 use Simplisti\Lib\JasperStarter\Option\OptionOutputType as oOutputType;
 use Simplisti\Lib\JasperStarter\Option\OptionDbScheme as oDbScheme;
@@ -8,7 +8,7 @@ use Simplisti\Lib\JasperStarter\Option\OptionDbScheme as oDbScheme;
 use Simplisti\Lib\JasperStarter\Reporter;
 
 $options[] = new oOutputType('pdf');
-$options[] = new oDbScheme('mysql');
+//$options[] = new oDbScheme('mysql');
 
 //$options[] = new \Simplisti\Lib\JasperStarter\OptionOutputType('pdf');
 //
@@ -22,10 +22,10 @@ $options[] = new oDbScheme('mysql');
 $outputFile = '';
 
 $reporter = new Reporter();
+$reporter->compile('tpl/test.jrxml');
+$process = $reporter->process('tpl/test.jasper', $outputFile, $options);
 
-//$reporter->compile('tpl/test.jrxml');
-//$process = $reporter->process('tpl/test.jasper', $outputFile, $options);
-//
-//echo $process->getCommandLine();
+echo "$outputFile\n";
+echo $process->getCommandLine()."\n";
 
-print_r($options);
+//print_r($reporter);

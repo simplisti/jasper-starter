@@ -4,13 +4,8 @@ namespace Simplisti\Lib\JasperStarter\Option;
 
 use Simplisti\Lib\JasperStarter\Exception\OutputUnrecognizedException;
 
-class OptionOutputType
+class OptionOutputType extends OptionAbstract
 {
-
-    /**
-     * @var string Represents the output file format type
-     */
-    private $type;
 
     /**
      * constructor
@@ -27,7 +22,7 @@ class OptionOutputType
             throw new OutputUnrecognizedException("File output type ($type) is not recognized. Must be one of the following: " . explode(',', $allowed));
         }
 
-        $this->type = $type;
+        $this->setValue($type);
     }
 
     /**
@@ -35,7 +30,7 @@ class OptionOutputType
      */
     public function __toString()
     {
-        return "-f={$this->type}";
+        return "-f={$this->getValue()}";
     }
 
 }
