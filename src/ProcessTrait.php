@@ -43,10 +43,6 @@ trait ProcessTrait
         $process->start();
         $process->wait(); // Make the process blocking
 
-        // NOTE: JasperStarter binary sends all output to stderr (not stdout?)
-        $this->binaryOutput[] = $process->getErrorOutput();
-        $this->binaryOutput[] = $process->getOutput();
-
         $outputFile .= $fileExtension;
 
         return $process; // The process handling processing

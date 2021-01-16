@@ -8,7 +8,7 @@ trait CompileTrait
 {
 
     /**
-     * Compile template(s) from source
+     * Compile template from source
      *
      * @param string $sourceFile JRXML source file (relative or absolute path)
      *
@@ -23,10 +23,6 @@ trait CompileTrait
 
         $process = new Process($command);
         $process->run();
-
-        // NOTE: JasperStarter binary sends all output to stderr (not stdout?)
-        $this->binaryOutput[] = $process->getErrorOutput();
-        $this->binaryOutput[] = $process->getOutput();
 
         return $process; // The process handling compilation
     }

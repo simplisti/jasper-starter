@@ -12,16 +12,12 @@ class Reporter
 
     use CompileTrait;
     use ProcessTrait;
+    use ParameterTrait;
 
     /**
      * @var string JasperStarter binary path (auto-discovered or manually provided). JasperStarter must be added to $PATH for auto-discovery.
      */
     private $binaryPath = '';
-
-    /**
-     * @var array JasperStarter binary command output(s) and error(s) if any
-     */
-    private $binaryOutput = [];
 
     /**
      * Constructor
@@ -46,16 +42,6 @@ class Reporter
                 throw new JasperBinaryMissingException('JasperStarter (jasperstarter) could not be found. Make sure Jasper is added to $PATH, or provide a absolute path as a constructor argument.');
             }
         }
-    }
-
-    /**
-     * Get output/errors from jasperstarter command
-     *
-     * @return array An array of errors or outputs
-     */
-    public function getOutput()
-    {
-        return $this->binaryOutput;
     }
 
     /**
