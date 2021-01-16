@@ -11,7 +11,7 @@ trait ProcessTrait
 {
 
     /**
-     * Process template(s) from jasper file
+     * Process template from source
      *
      * @param string $sourceFile JRXML source file (relative or absolute path)
      * @param string &$outputFile Temporary file for the resulting output
