@@ -12,7 +12,6 @@ use Simplisti\Lib\JasperStarter\Option\OptionOutputType as oOutputType;
 // Use aggregate DB connection object
 //$optionDb = new oDbConn('simplisti', 'root');
 
-
 $options[] = new oOutputType('pdf');
 $options = array_merge($options, (array)$optionDb);
 
@@ -24,8 +23,10 @@ $parameters = new oParams([
 $outputFile = '';
 
 $reporter = new Reporter('/opt/jasperstarter/bin/jasperstarter'); // NOTE: Manually provide jasperstarter?!? Need PATH= otherwise
-$reporter->compile('tpl/cert.jrxml');
-$reporter->process('tpl/cert.jasper', $outputFile, $options, $parameters);
-//echo $process->getCommandLine()."\n";
+//$reporter->compile('tpl/cert.jrxml');
+//$reporter->process('tpl/cert.jasper', $outputFile, $options, $parameters);
 
-print_r($reporter->getOutput());
+$parameters = [];
+$reporter->listParameters('tpl/cert.jrxml', $parameters);
+
+//echo $process->getCommandLine()."\n";
