@@ -4,3 +4,6 @@ JasperStarter appears to have a few issues:
 2. The -o <outputFile> option doesn't seem to work - it gives an error about file.jasper cannot be written
 3. MySQL 10+ requires ?useSSL=true query option which can only be provided via the --db-uri switch but seems buggy?
 
+NOTE:
+I may have been missing the `libmysql-java` as part of the mysql install in Vagrantfile which resulted in mysql JDBC errors
+

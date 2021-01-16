@@ -2,6 +2,7 @@
 
 namespace Simplisti\Lib\JasperStarter;
 
+use Simplisti\Lib\JasperStarter\Option\OptionParameter;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ExecutableFinder;
 
@@ -29,16 +30,16 @@ class Reporter
     {
         if (null !== $binaryPath) { // Manually override the name/location of jasper binary
             if (!file_exists($binaryPath)) {
-                throw new JasperBinaryMissingException("JasperStarter location ($binaryPath) could not be found. Pleases verify it's existence and try again.");
+                throw new JasperBinaryMissingException("JasperStarter location ($binaryPath) could not be found. Verify it's existence and try again.");
             }
 
-            $this->binaryPath = $binaryPath;
+            $this->binaryPath = escapeshellarg($binaryPath);
         } else {
             $executableFinder = new ExecutableFinder();
-            $this->binaryPath = $executableFinder->find('jasperstarter');
+            $this->binaryPath = escapeshellarg($executableFinder->find('jasperstarter'));
 
             if (null === $this->binaryPath) {
-                throw new JasperBinaryMissingException('JasperStarter (jasperstarter) could not be found. Pleases provide a location as a constructor argument.');
+                throw new JasperBinaryMissingException('JasperStarter (jasperstarter) could not be found. Make sure Jasper is added to $PATH, or provide a absolute path as a constructor argument.');
             }
         }
     }
@@ -85,9 +86,9 @@ class Reporter
      * @return int binary command exit code via $process->run()
      */
 
-    public function process(string $sourceFile, string &$outputFile, ?array $options = []): Process
+    public function process(string $sourceFile, string &$outputFile, ?array $options = [], ?OptionParameter $parameters = null): Process
     {
-        $this->validateSourceFile($sourceFile);
+        $sourceFile = $this->validateSourceFile($sourceFile);
 
         // NOTE: Convert each Option object to a string for switch interpolation
         $fileExtension = '.pdf';
@@ -99,12 +100,15 @@ class Reporter
         }, $options);
 
         $outputFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . bin2hex(random_bytes(12));
-        $command = [$this->binaryPath, '-v', 'pr', "-o=$outputFile", $sourceFile];
-        $command = array_merge($command, $options);
 
-        $process = new Process($command);
+        $options = implode(' ', $options);
+        $process = Process::fromShellCommandline("{$this->binaryPath} -v pr -o=$outputFile $sourceFile $options $parameters");
+
         $process->start();
         $process->wait(); // Make the process blocking
+
+        // NOTE: JasperStarter binary sends all output to stderr (not stdout?)
+        $this->binaryOutput[] = $process->getErrorOutput();
 
         $outputFile .= $fileExtension;
 
@@ -120,6 +124,8 @@ class Reporter
             }
             throw new SourceFileMissingException("Source file ($sourceFile) is missing or cannot be found. $moreHelp");
         }
+
+        return escapeshellarg($sourceFile);
     }
 
 }

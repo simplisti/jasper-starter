@@ -2,30 +2,30 @@
 
 include_once 'vendor/autoload.php';
 
-use Simplisti\Lib\JasperStarter\Option\OptionOutputType as oOutputType;
-use Simplisti\Lib\JasperStarter\Option\OptionDbScheme as oDbScheme;
-
 use Simplisti\Lib\JasperStarter\Reporter;
 
-$options[] = new oOutputType('pdf');
-//$options[] = new oDbScheme('mysql');
+use Simplisti\Lib\JasperStarter\Option\OptionParameter as oParams;
 
-//$options[] = new \Simplisti\Lib\JasperStarter\OptionOutputType('pdf');
-//
-//$options[] = new \Simplisti\Lib\JasperStarter\OptionDbScheme('mysql');
-//$options[] = new \Simplisti\Lib\JasperStarter\OptionDbHost('localhost');
-//$options[] = new \Simplisti\Lib\JasperStarter\OptionDbName('simplisti');
-//$options[] = new \Simplisti\Lib\JasperStarter\OptionDbUser('apps');
-//$options[] = new \Simplisti\Lib\JasperStarter\OptionDbPass('');
-//$options[] = new \Simplisti\Lib\JasperStarter\OptionDbPort(2306);
+use Simplisti\Lib\JasperStarter\Option\OptionDb as oDbConn;
+use Simplisti\Lib\JasperStarter\Option\OptionOutputType as oOutputType;
+
+// Use aggregate DB connection object
+//$optionDb = new oDbConn('simplisti', 'root');
+
+
+$options[] = new oOutputType('pdf');
+$options = array_merge($options, (array)$optionDb);
+
+$parameters = new oParams([
+    'ID_ORGANIZATION' => 254,
+    'ID_WORKORDER' => 112203
+]);
 
 $outputFile = '';
 
-$reporter = new Reporter();
-$reporter->compile('tpl/test.jrxml');
-$process = $reporter->process('tpl/test.jasper', $outputFile, $options);
+$reporter = new Reporter('/opt/jasperstarter/bin/jasperstarter'); // NOTE: Manually provide jasperstarter?!? Need PATH= otherwise
+$reporter->compile('tpl/cert.jrxml');
+$reporter->process('tpl/cert.jasper', $outputFile, $options, $parameters);
+//echo $process->getCommandLine()."\n";
 
-echo "$outputFile\n";
-echo $process->getCommandLine()."\n";
-
-//print_r($reporter);
+print_r($reporter->getOutput());

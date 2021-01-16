@@ -17,7 +17,7 @@ class OptionAbstract
 
     protected function setValue($value)
     {
-        $this->value = $value;
+        $this->value = escapeshellarg($value);
         return $this;
     }
 
