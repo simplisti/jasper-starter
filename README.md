@@ -15,7 +15,12 @@ composer require "simplisti/jasper-starter"
  - DB report
  - JSON or XML
 
+ - Include a compile profiler button in toolbar?
 ```
+
+![image](https://user-images.githubusercontent.com/4084940/175361601-bbc8e458-3d41-41f8-94a2-68c0dd08c63c.png)
+
+
 <?php
 
 include_once 'vendor/autoload.php';
